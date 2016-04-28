@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# ipv6
+# Created at: 2016-04-26
+#
+# To start ipv6 service:
+# ipv6 start
+#
+# To stop ipv6 service:
+# ipv6 stop
+
+
+trigger="$1"
+working_path=`dirname $0`
+if [ $trigger == "start" ]; then
+    bash $working_path/thuipv6tunnel.sh
+elif [ $trigger == "stop" ]; then
+    sudo ifconfig gif0 destroy
+    echo "ipv6 service stopped."
+fi
